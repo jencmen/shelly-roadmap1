@@ -7,7 +7,8 @@ import {
   PolarAngleAxis,
   PolarRadiusAxis,
   ResponsiveContainer,
-  Tooltip
+  Tooltip,
+  Legend
 } from 'recharts';
 import { CLUSTER_DATA } from '../constants';
 import { Icon } from './Icon';
@@ -20,43 +21,58 @@ export const RoadmapChart: React.FC = () => {
             <Icon name="Activity" size={20} />
           </div>
          <div>
-            <h3 className="font-bold text-lg text-slate-800">מפת החוזקות</h3>
-            <p className="text-xs text-slate-500">המשולש: מוח, לב ורגליים</p>
+            <h3 className="font-bold text-lg text-slate-800">מפת חוזקות מול אתגרים</h3>
+            <p className="text-xs text-slate-500">תמונת מצב רב-ממדית</p>
          </div>
       </div>
       
-      <div className="flex-grow min-h-[300px] relative">
+      <div className="flex-grow min-h-[350px] relative mt-4">
         <ResponsiveContainer width="100%" height="100%">
           <RadarChart cx="50%" cy="50%" outerRadius="70%" data={CLUSTER_DATA}>
             <PolarGrid stroke="#e2e8f0" />
             <PolarAngleAxis 
               dataKey="subject" 
-              tick={{ fill: '#475569', fontSize: 13, fontWeight: 500 }} 
+              tick={{ fill: '#475569', fontSize: 12, fontWeight: 600 }} 
             />
             <PolarRadiusAxis angle={30} domain={[0, 100]} tick={false} axisLine={false} />
+            
             <Radar
-              name="עוצמה"
-              dataKey="A"
+              name="חוזקות"
+              dataKey="strength"
               stroke="#6366f1"
               strokeWidth={3}
               fill="#6366f1"
-              fillOpacity={0.2}
+              fillOpacity={0.25}
             />
-            <Tooltip />
+            
+            <Radar
+              name="אתגרים/פערים"
+              dataKey="challenge"
+              stroke="#f59e0b"
+              strokeWidth={3}
+              fill="#f59e0b"
+              fillOpacity={0.25}
+            />
+            
+            <Tooltip 
+              contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)' }}
+              formatter={(value, name) => [value, name === 'strength' ? 'חוזקה' : 'רמת אתגר']}
+            />
+            <Legend verticalAlign="bottom" height={36}/>
           </RadarChart>
         </ResponsiveContainer>
-        
-        <div className="absolute bottom-0 right-0 left-0 flex justify-center gap-6 text-xs text-slate-500">
-           <div className="flex items-center gap-1">
-             <span className="w-2 h-2 rounded-full bg-blue-500"></span> מוח
-           </div>
-           <div className="flex items-center gap-1">
-             <span className="w-2 h-2 rounded-full bg-rose-500"></span> לב
-           </div>
-           <div className="flex items-center gap-1">
-             <span className="w-2 h-2 rounded-full bg-emerald-500"></span> רגליים
-           </div>
-        </div>
+      </div>
+      
+      <div className="mt-4 pt-4 border-t border-slate-100 flex justify-center gap-6 text-[10px] md:text-xs text-slate-400 font-medium">
+         <div className="flex items-center gap-1">
+           <span className="w-2 h-2 rounded-full bg-blue-500 opacity-60"></span> מוח
+         </div>
+         <div className="flex items-center gap-1">
+           <span className="w-2 h-2 rounded-full bg-rose-500 opacity-60"></span> לב
+         </div>
+         <div className="flex items-center gap-1">
+           <span className="w-2 h-2 rounded-full bg-emerald-500 opacity-60"></span> רגליים
+         </div>
       </div>
     </div>
   );

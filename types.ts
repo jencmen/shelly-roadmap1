@@ -27,7 +27,8 @@ export interface JourneyStation {
 
 export interface ChartDataPoint {
   subject: string;
-  A: number;
+  strength: number;
+  challenge: number;
   fullMark: number;
   category: 'Mind' | 'Heart' | 'Legs';
 }

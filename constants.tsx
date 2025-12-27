@@ -66,12 +66,12 @@ export const JOURNEY_STATIONS: JourneyStation[] = [
 ];
 
 export const CLUSTER_DATA: ChartDataPoint[] = [
-  { subject: 'ניתוח ואסטרטגיה', A: 95, fullMark: 100, category: 'Mind' },
-  { subject: 'סקרנות ולמידה', A: 90, fullMark: 100, category: 'Mind' },
-  { subject: 'רגישות ואמפתיה', A: 95, fullMark: 100, category: 'Heart' },
-  { subject: 'אנרגיות חיוביות', A: 85, fullMark: 100, category: 'Heart' },
-  { subject: 'אופרטיביות', A: 90, fullMark: 100, category: 'Legs' },
-  { subject: 'חריצות והתמדה', A: 100, fullMark: 100, category: 'Legs' },
+  { subject: 'אסטרטגיה', strength: 95, challenge: 20, fullMark: 100, category: 'Mind' },
+  { subject: 'סקרנות', strength: 90, challenge: 15, fullMark: 100, category: 'Mind' },
+  { subject: 'אמפתיה', strength: 95, challenge: 30, fullMark: 100, category: 'Heart' },
+  { subject: 'אנרגיות', strength: 85, challenge: 40, fullMark: 100, category: 'Heart' },
+  { subject: 'אופרטיביות', strength: 90, challenge: 25, fullMark: 100, category: 'Legs' },
+  { subject: 'חריצות', strength: 100, challenge: 10, fullMark: 100, category: 'Legs' },
 ];
 
 export const EMOTIONAL_TAGS: EmotionalTag[] = [
